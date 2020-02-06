@@ -42,10 +42,10 @@ def generator():
   x = BatchNormalization()(x)  
   x = Add()([skip1, x])
   x = Conv2D(256, (3, 3), padding='same', strides=1) (x)
-  #x = SubpixelConv2d(scale=2, n_out_channels=None, act=tf.nn.relu)(x)
+  x = layers.UpSampling2D(3)(x)  #Check this
   x = PReLU()(x)
   x = Conv2D(256, (3, 3), padding='same', strides=1) (x)
-  #x = SubpixelConv2d(scale=2, n_out_channels=None,act=tf.nn.relu)(x)#, (x)
+  x = layers.UpSampling2D(3)(x)  #Check this
   x = PReLU()(x) 
   x = Conv2D(3, (9, 9), padding='same', strides=1) (x)
 
